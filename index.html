@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务007</title>
+	<link rel = "stylesheet" type = "text/css" href = "cssStyle.css">	
+</head>
+<body>
+	<div class = "bigContainer">
+	<div class = "top">
+			<ul id = "topcenter">
+				<li>
+					<img src = "images/a15.png" alt = "">
+				</li>
+				<li class = "txtbox">
+					<p id = "roller" style = "position: relative; left: 980px;">[温馨提示]最近有不少不法分子在网上骗人，请大家注意!!!</p>
+				</li>
+			</ul>
+	</div>
+	<div id = "container" class = "container">		
+		<div id = "cartoon" class = "cartoon">
+			<div class = "image"><img src = "images/b5.png" alt = ""></div>
+			<div class = "image"><img src = "images/b1.png" alt = ""></div>
+			<div class = "image"><img src = "images/b2.png" alt = ""></div>
+			<div class = "image"><img src = "images/b3.png" alt = ""></div>
+			<div class = "image"><img src = "images/b4.png" alt = ""></div>
+			<div class = "image"><img src = "images/b5.png" alt = ""></div>
+			<div class = "image"><img src = "images/b1.png" alt = ""></div>			
+		</div>
+		<span id = "left"> < </span>
+		<span id = "right"> > </span>
+		<ul id = "navigation" class = "navigation">
+			<li class = "nav">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+	</div>
+	</div>
+	<script src = "animate.js"></script>
+	<script type = "text/javascript">
+		var container = document.getElementById("container");
+		var cartoon = document.getElementById("cartoon");
+		var navigation = document.getElementById("navigation");
+		var left = document.getElementById("left");
+		var right = document.getElementById("right");
+		var navList = document.getElementById("navigation").children;
+		var roller = document.getElementById("roller");
+		var ending = document.getElementById("ending");
+		var index =1;
+		var isMoving = false;
+		//轮播图进行切换的函数
+		function next(){
+			index++;
+			navColor();
+			animate(cartoon,{left:-1200*index},function(){
+				if(index === 6){
+					cartoon.style.left = "-1200px";
+					index = 1;
+				}
+			});
+		}
+		//轮播图每隔3秒进行自动的切换	
+		var timer = setInterval(next,3000);
+		//鼠标移动到图所在区域时，会出现上一页，下一页图标
+		container.onmouseover = function(){
+			animate(left,{opacity:50});
+			animate(right,{opacity:50});
+			clearInterval(timer);
+		}
+		//鼠标移出图所在区域时，上一页，下一页图标不显示，轮播图继续进行每隔3秒钟的自动切换
+		container.onmouseout = function(){
+			animate(left,{opacity:0});
+			animate(right,{opacity:0});
+			timer = setInterval(next,3000)
+		}
+		//点击下一页图标可以完成下一页切换
+		right.onclick = next;
+		function before(){
+			index--;
+			navColor();
+			animate(cartoon,{left:-1200*index},function(){
+				if(index === 0){
+					cartoon.style.left = "-6000px";
+					index = 5;
+				}
+			});
+		}
+		////点击上一页图标可以完成上一页切换
+		left.onclick = before;
+		//轮播图点击标签时也可以完成切换效果
+		for(var i=0;i<navList.length;i++){
+			navList[i].forIndex = i;//添加属性记录当前i的值
+			navList[i].onclick = function(){
+				index = this.forIndex+ 1;
+				navColor();
+				animate(cartoon,{left:-1200*index});
+			}
+		}
+		//按钮导航颜色随变化而显色
+		function navColor(){
+			for(var i=0;i<navList.length;i++){
+				navList[i].className = '';
+			}
+			if(index ===6){
+				//添加类名
+				navList[0].className = "nav";
+			}else if(index === 0){
+				navList[4].className = "nav";
+			}else{
+				navList[index-1].className = "nav";
+			}
+		}
+		//消息自右向左进行滚动，超出范围则消失，可以完成循环滚动过程。
+		window.onload = function(){
+			var interValid = setInterval(function(){
+				var left = roller.style.left;
+				if(parseInt(left)<-484){
+					roller.style.left = "980px";
+				}else{
+					roller.style.left = (parseInt(left)-3)+"px";
+				}
+			},50);
+		}
+	</script>
+</body>
+</html>

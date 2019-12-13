@@ -1,0 +1,103 @@
+/*
+* @Author: Deeream
+* @Date:   2019-12-12 16:32:21
+* @Last Modified by:   Deeream
+* @Last Modified time: 2019-12-13 18:20:14
+*/
+*{
+	padding: 0;
+	margin: 0;
+}
+ul,li{
+	list-style: none;
+}
+.bigContainer{
+	height: 470px;
+	margin: 0 auto;
+}
+.container{
+	width: 1200px;
+	height: 382px;
+	border: 1px solid white;
+	margin: 10px auto;
+	position: relative;
+	overflow: hidden;
+}
+.cartoon{
+	width: 8400px;
+	position: absolute;
+	left: -1200px;
+}
+.top{
+	height: 24px;
+	margin: 0 auto;
+	background-color: #ccc;
+}
+.top img{
+	margin-top: 4px;
+}
+.top p{
+	font: 12px '微软雅黑';
+	color: red;
+	line-height: 23px;
+}
+.top .txtbox{
+	width: 970px;
+	height: 24px;
+	margin-left: 14px;
+	position: relative;
+	overflow: hidden;
+}
+#topcenter{
+	width: 1000px;
+	height: 24px;
+	margin: 0 auto;
+}
+#topcenter li{
+	float: left;
+}
+.image{
+	width: 1200px;
+	float: left;
+	overflow: hidden;
+}
+.container span{
+	display: block;
+	width: 30px;
+	height: 50px;
+	text-align: center;
+	cursor: pointer;
+	color: ;
+	top: 175px;
+	line-height: 50px;
+	background: red;
+	color: #fff;
+	font-size: 30px;
+	position: absolute;
+	opacity: 0;
+}
+#left{
+	left: 30px;
+}
+#right{
+	right: 30px;
+}
+.navigation{
+	position: absolute;
+	left: 500px;
+	bottom: 8px;
+}
+.navigation li{
+	width: 20px;
+	height: 20px;
+	background: #ccc;
+	cursor: pointer;
+	float: left;
+	margin: 0 10px;
+	border-radius: 50%;
+	text-align: center;
+}
+.navigation .nav{
+	background: red;
+	color: #fff;
+}
